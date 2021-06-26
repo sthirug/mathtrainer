@@ -7,16 +7,19 @@
 
 </head>
 
-<h1>Mutiplication Trainer</h1>
+<h1>Multiplication Trainer</h1>
 
 <h1>
     <span id="question">5 x 7</span>
     <span id="result"></span>
 </h1>
 
-<input type="text" value="" />
+<input id="userAnswer" type="text" value="" />
 
-<input type="button" value="Submit" onclick="processAnswer();" />
+<input id="btnSubmit" type="button" value="Submit" onclick="processAnswer();" />
+
+<input id="btnNext" type="button" value="Next" onclick="nextQuestion();" />
+
 
 <br>
 <br>
@@ -37,10 +40,40 @@
     function processAnswer() {
         var fn = document.getElementById("firstNumber");
         var ln = document.getElementById("secondNumber");
+
+        var usrAnwser = document.getElementById("userAnswer");
+
         var result = parseInt(fn.textContent) * parseInt(ln.textContent);
         var r = document.getElementById("result");
-        r.innerText = " = " + result.toString();
+        r.innerText = " = " + result.toString() + " [Your answer:" + usrAnwser.value.toString() + "]";
+
+        var bSubmit = document.getElementById("btnSubmit");
     }
+
+
+    function nextQuestion() {
+        var fn = document.getElementById("firstNumber");
+        var ln = document.getElementById("secondNumber");
+        
+        fn.innerText = getRandomInt(10).toString();
+        ln.innerText = getRandomInt(10).toString();
+        
+        var questionBuilt = fn.innerText + " X " + ln.innerText;
+        var q = document.getElementById("question");
+        q.innerText = questionBuilt;
+
+        var r = document.getElementById("result");
+        r.innerText = "";
+
+        var bNext = document.getElementById("btnNext");
+        //bSubmit.value = "Submit";
+    }
+
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * max);
+    }
+
+
 
     window.onload = showQuestion();
 
