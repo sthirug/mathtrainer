@@ -16,28 +16,27 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Math Trainer</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="./home.html">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="./multiplication-trainer.html">Multiplication</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Settings</a>
-              </li>
-            </ul>
-            <span class="navbar-text right">
-                | 0.5
-            </span>
-          </div>
+            <a class="navbar-brand" href="./home.html">Math Trainer</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="./home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"
+                            href="./multiplication-trainer.html">Multiplication</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Settings</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </nav>
+    </nav>
 
     <div class="container">
 
@@ -77,13 +76,14 @@
 
 </body>
 <script type="text/javascript">
-    function showQuestion() {
-        var fn = document.getElementById("firstNumber");
-        var ln = document.getElementById("secondNumber");
-        var questionBuilt = fn.innerText + " X " + ln.innerText;
-        var q = document.getElementById("question");
-        q.innerText = questionBuilt;
-    }
+
+    var input = document.getElementById("userAnswer");
+    input.addEventListener("keydown", function (event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            document.getElementById("btnSubmit").click();
+        }
+    });
 
     function processAnswer() {
         var usrAnwser = document.getElementById("userAnswer");
@@ -118,6 +118,7 @@
         }
 
         usrAnwser.value = "";
+        document.getElementById("btnNext").focus();
     }
 
     function nextQuestion() {
@@ -152,13 +153,16 @@
         var divAnswer = document.getElementById("usrAnwserDiv");
         divAnswer.style.display = 'block';
 
+        document.getElementById("userAnswer").focus();
+
     }
 
     function getRandomInt(max) {
         return Math.floor(Math.random() * max);
     }
 
-    window.onload = showQuestion();
+    window.onload = nextQuestion();
+    //window.onload = showQuestion();
 
 </script>
 
