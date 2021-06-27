@@ -39,36 +39,39 @@
     </nav>
 
     <div class="container">
-
         <br>
 
-        <h1 class="display-4">
-            <span id="question">5 x 7</span>
-            <br>
-            <p id="correctAnswer"></p>
-            <br>
-            <p id="result"></p>
-        </h1>
-
-        <div class="container-sm pt-3">
-
-            <div id="usrAnwserDiv" class="mb-3 row">
-                <label for="userAnswer" class="form-label">Enter your answer</label>
-                <input id="userAnswer" type="text" class="form-control" value="" />
+        <div class="row justify-content-start">
+            <div class="col-6 border border-4">
+                <h1 class="display-4">
+                    <span id="question">5 x 7</span><span> = </span>
+                    <span id="correctAnswer"></span>
+                    <br>
+                    <br>
+                </h1>
+                <h2>
+                <p id="result"></p>
+            </h2>
             </div>
+            <div class="col-4 border border-4">
+                <div class="container-sm pt-3">
 
-            <div class="mb-3 row">
+                    <div id="usrAnwserDiv" class="mb-3 row">
+                        <label for="userAnswer" class="form-label">Enter your answer</label>
+                        <input id="userAnswer" type="text" class="form-control" value="" />
+                    </div>
 
-                <button id="btnSubmit" class="btn btn-primary" type="submit" onclick="processAnswer();">Submit
-                </button>
-            </div>
-            <div class="mb-3 row">
-
-                <button id="btnNext" class="btn btn-secondary" type="submit" onclick="nextQuestion();">Next
-                </button>
+                    <div class="mb-3 row">
+                        <button id="btnSubmit" class="btn btn-primary" type="submit" onclick="processAnswer();">Submit
+                        </button>
+                    </div>
+                    <div class="mb-3 row">
+                        <button id="btnNext" class="btn btn-secondary" type="submit" onclick="nextQuestion();">Next
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
-
 
         <span id="firstNumber" style="display: none;">2</span>
         <span id="secondNumber" style="display: none;">2</span>
@@ -104,7 +107,7 @@
         var result = parseInt(fn.textContent) * parseInt(ln.textContent);
 
         var correctAnswer = document.getElementById("correctAnswer");
-        correctAnswer.innerText = " = " + result.toString();
+        correctAnswer.innerText = result.toString();
 
         var r = document.getElementById("result");
 
@@ -145,7 +148,7 @@
         r.innerText = "";
 
         var correctAnswer = document.getElementById("correctAnswer");
-        correctAnswer.innerText = "";
+        correctAnswer.innerText = "?";
 
         var bSubmit = document.getElementById("btnSubmit");
         bSubmit.style.display = 'block';
