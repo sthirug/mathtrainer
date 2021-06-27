@@ -22,13 +22,14 @@
 
         <h1>
             <span id="question">5 x 7</span>
+            <br>
             <span id="result"></span>
         </h1>
 
         <div class="container-sm pt-3 border border-primary">
 
             <div class="mb-3 row">
-                <label for="userAnswer" class="form-label" >Enter your answer</label>
+                <label for="userAnswer" class="form-label">Enter your answer</label>
                 <input id="userAnswer" type="text" class="form-control" value="" />
             </div>
 
@@ -72,9 +73,16 @@
         var fn = document.getElementById("firstNumber");
         var ln = document.getElementById("secondNumber");
 
+        var verdict = "is NOT correct";
         var result = parseInt(fn.textContent) * parseInt(ln.textContent);
+
+        if(usrAnwser.value.toString() == result.toString())
+        {
+            verdict = "is CORRECT!!!"
+        }
+
         var r = document.getElementById("result");
-        r.innerText = " = " + result.toString() + " [Your answer:" + usrAnwser.value.toString() + "]";
+        r.innerText = " = " + result.toString() + " | Your answer " + usrAnwser.value.toString() + " " + verdict;
 
         usrAnwser.value = "";
     }
@@ -83,8 +91,17 @@
         var fn = document.getElementById("firstNumber");
         var ln = document.getElementById("secondNumber");
 
-        fn.innerText = getRandomInt(10).toString();
-        ln.innerText = getRandomInt(10).toString();
+        var firstNum = "0";
+        var secondNum = "0";
+
+        do {
+            firstNum = getRandomInt(10).toString();
+            secondNum = getRandomInt(10).toString();
+        }
+        while (firstNum == "0" && secondNum == "0");
+
+        fn.innerText = firstNum;
+        ln.innerText = secondNum;
 
         var questionBuilt = fn.innerText + " X " + ln.innerText;
         var q = document.getElementById("question");
