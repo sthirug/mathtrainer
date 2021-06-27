@@ -18,17 +18,22 @@
 
     <div class="container">
 
-        <h1>Multiplication Trainer</h1>
+        <h1 class="display-1">Multiplication Trainer</h1>
 
-        <h1>
+        <br>
+        <br>
+
+        <h1 class="display-4">
             <span id="question">5 x 7</span>
             <br>
-            <span id="result"></span>
+            <p id="correctAnswer"></p>
+            <br>
+            <p id="result"></p>
         </h1>
 
-        <div class="container-sm pt-3 border border-primary">
+        <div class="container-sm pt-3">
 
-            <div class="mb-3 row">
+            <div id="usrAnwserDiv" class="mb-3 row">
                 <label for="userAnswer" class="form-label">Enter your answer</label>
                 <input id="userAnswer" type="text" class="form-control" value="" />
             </div>
@@ -70,19 +75,27 @@
         var bSubmit = document.getElementById("btnSubmit");
         bSubmit.style.display = 'none';
 
+        var divAnswer = document.getElementById("usrAnwserDiv");
+        divAnswer.style.display = 'none';
+
         var fn = document.getElementById("firstNumber");
         var ln = document.getElementById("secondNumber");
 
-        var verdict = "is NOT correct";
         var result = parseInt(fn.textContent) * parseInt(ln.textContent);
 
-        if(usrAnwser.value.toString() == result.toString())
-        {
-            verdict = "is CORRECT!!!"
-        }
+        var correctAnswer = document.getElementById("correctAnswer");
+        correctAnswer.innerText = " = " + result.toString();
 
         var r = document.getElementById("result");
-        r.innerText = " = " + result.toString() + " | Your answer " + usrAnwser.value.toString() + " " + verdict;
+
+        if (usrAnwser.value.toString() == result.toString()) {
+            r.innerText = "Hurray!!! You got it right!";
+            r.className = "text-success";
+        }
+        else {
+            r.innerText = "OOPS!!! " + usrAnwser.value.toString() + " is NOT the correct answer!";
+            r.className = "text-danger";
+        }
 
         usrAnwser.value = "";
     }
@@ -110,11 +123,15 @@
         var r = document.getElementById("result");
         r.innerText = "";
 
+        var correctAnswer = document.getElementById("correctAnswer");
+        correctAnswer.innerText = "";
+
         var bSubmit = document.getElementById("btnSubmit");
         bSubmit.style.display = 'block';
 
-        //var bNext = document.getElementById("btnNext");
-        //bSubmit.value = "Submit";
+        var divAnswer = document.getElementById("usrAnwserDiv");
+        divAnswer.style.display = 'block';
+
     }
 
     function getRandomInt(max) {
