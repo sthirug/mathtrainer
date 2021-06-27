@@ -25,27 +25,25 @@
             <span id="result"></span>
         </h1>
 
-        <div class="container-sm pt-3 border border-primary" >
+        <div class="container-sm pt-3 border border-primary">
 
             <div class="mb-3 row">
-                <label for="userAnswer">Your answer</label>
-        <input id="userAnswer" type="text" class="form-control" value="" />
+                <label for="userAnswer" class="form-label" >Enter your answer</label>
+                <input id="userAnswer" type="text" class="form-control" value="" />
             </div>
 
             <div class="mb-3 row">
 
-        <button id="btnSubmit" class="btn btn-primary" class="form-control" onclick="processAnswer();">Submit
-        </button>
+                <button id="btnSubmit" class="btn btn-primary" type="submit" onclick="processAnswer();">Submit
+                </button>
             </div>
-        <div class="mb-3 row">
+            <div class="mb-3 row">
 
-        <button id="btnNext" class="btn btn-secondary" class="form-control" onclick="nextQuestion();">Next
-        </button>
+                <button id="btnNext" class="btn btn-secondary" type="submit" onclick="nextQuestion();">Next
+                </button>
+            </div>
         </div>
-    </div>
-        <br>
-        <br>
-        <br>
+
 
         <span id="firstNumber" style="display: none;">2</span>
         <span id="secondNumber" style="display: none;">2</span>
@@ -74,14 +72,12 @@
         var fn = document.getElementById("firstNumber");
         var ln = document.getElementById("secondNumber");
 
-
         var result = parseInt(fn.textContent) * parseInt(ln.textContent);
         var r = document.getElementById("result");
         r.innerText = " = " + result.toString() + " [Your answer:" + usrAnwser.value.toString() + "]";
 
-
+        usrAnwser.value = "";
     }
-
 
     function nextQuestion() {
         var fn = document.getElementById("firstNumber");
@@ -107,8 +103,6 @@
     function getRandomInt(max) {
         return Math.floor(Math.random() * max);
     }
-
-
 
     window.onload = showQuestion();
 
