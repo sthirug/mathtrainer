@@ -4,30 +4,54 @@
 <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="utf-8" http-equiv="encoding">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
 
 </head>
 
-<h1>Multiplication Trainer</h1>
+<body>
 
-<h1>
-    <span id="question">5 x 7</span>
-    <span id="result"></span>
-</h1>
+    <div class="container">
 
-<input id="userAnswer" type="text" value="" />
+        <h1>Multiplication Trainer</h1>
 
-<input id="btnSubmit" type="button" value="Submit" onclick="processAnswer();" />
+        <h1>
+            <span id="question">5 x 7</span>
+            <span id="result"></span>
+        </h1>
 
-<input id="btnNext" type="button" value="Next" onclick="nextQuestion();" />
+        <div class="container-sm pt-3 border border-primary" >
 
+            <div class="mb-3 row">
+                <label for="userAnswer">Your answer</label>
+        <input id="userAnswer" type="text" class="form-control" value="" />
+            </div>
 
-<br>
-<br>
-<br>
+            <div class="mb-3 row">
 
-<span id="firstNumber" style="display: none;">2</span>
-<span id="secondNumber" style="display: none;">2</span>
+        <button id="btnSubmit" class="btn btn-primary" class="form-control" onclick="processAnswer();">Submit
+        </button>
+            </div>
+        <div class="mb-3 row">
 
+        <button id="btnNext" class="btn btn-secondary" class="form-control" onclick="nextQuestion();">Next
+        </button>
+        </div>
+    </div>
+        <br>
+        <br>
+        <br>
+
+        <span id="firstNumber" style="display: none;">2</span>
+        <span id="secondNumber" style="display: none;">2</span>
+    </div>
+
+</body>
 <script type="text/javascript">
     function showQuestion() {
         var fn = document.getElementById("firstNumber");
@@ -38,26 +62,34 @@
     }
 
     function processAnswer() {
+        var usrAnwser = document.getElementById("userAnswer");
+        if (usrAnwser.value.toString() == "") {
+            alert("Please enter your answer and then submit");
+            return;
+        }
+
+        var bSubmit = document.getElementById("btnSubmit");
+        bSubmit.style.display = 'none';
+
         var fn = document.getElementById("firstNumber");
         var ln = document.getElementById("secondNumber");
 
-        var usrAnwser = document.getElementById("userAnswer");
 
         var result = parseInt(fn.textContent) * parseInt(ln.textContent);
         var r = document.getElementById("result");
         r.innerText = " = " + result.toString() + " [Your answer:" + usrAnwser.value.toString() + "]";
 
-        var bSubmit = document.getElementById("btnSubmit");
+
     }
 
 
     function nextQuestion() {
         var fn = document.getElementById("firstNumber");
         var ln = document.getElementById("secondNumber");
-        
+
         fn.innerText = getRandomInt(10).toString();
         ln.innerText = getRandomInt(10).toString();
-        
+
         var questionBuilt = fn.innerText + " X " + ln.innerText;
         var q = document.getElementById("question");
         q.innerText = questionBuilt;
@@ -65,7 +97,10 @@
         var r = document.getElementById("result");
         r.innerText = "";
 
-        var bNext = document.getElementById("btnNext");
+        var bSubmit = document.getElementById("btnSubmit");
+        bSubmit.style.display = 'block';
+
+        //var bNext = document.getElementById("btnNext");
         //bSubmit.value = "Submit";
     }
 
