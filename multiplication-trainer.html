@@ -58,7 +58,7 @@
 
                     <div id="usrAnwserDiv" class="mb-3 row">
                         <label for="userAnswer" class="form-label">Enter your answer</label>
-                        <input id="userAnswer" type="text" class="form-control" value="" />
+                        <input id="userAnswer" type="number" min="0" autocomplete="new-password" class="form-control" value="" />
                     </div>
 
                     <div class="mb-3 row">
@@ -91,7 +91,9 @@
     function processAnswer() {
         var usrAnwser = document.getElementById("userAnswer");
         if (usrAnwser.value.toString() == "") {
-            alert("Please enter your answer and then submit");
+            alert("Please enter a valid number and then submit");
+            usrAnwser.value = "";
+            usrAnwser.focus();
             return;
         }
 
