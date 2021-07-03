@@ -58,7 +58,10 @@
 
                     <div id="usrAnwserDiv" class="mb-3 row">
                         <label for="userAnswer" class="form-label">Enter your answer</label>
-                        <input id="userAnswer" type="number" min="0" autocomplete="new-password" class="form-control" value="" />
+                        <input id="userAnswer" type="number" min="0" autocomplete="new-password" class="form-control" value="" onkeydown="javascript: return event.keyCode === 8 ||
+                        event.keyCode === 46 ? true : !isNaN(Number(event.key))"/>
+                        
+                   
                     </div>
 
                     <div class="mb-3 row">
